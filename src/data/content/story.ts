@@ -2,7 +2,39 @@ import type { PhotoAsset } from '../../types';
 
 // Seleção provisória P4. Trocar somente estas referências; preservar os originais.
 const base = '/assets/photos/fernanda/';
-export const photos = {
+const couplePhotos: [PhotoAsset, PhotoAsset] = [
+  {
+    id: 'couple-car',
+    category: 'couple',
+    src: base + 'nandinha7.jpeg',
+    alt: 'Cauê e Fernanda juntos no carro',
+    width: 900,
+    height: 1600,
+  },
+  {
+    id: 'couple-puppies',
+    category: 'couple',
+    src: base + 'caue-com-ela..webp',
+    alt: 'Dois cachorrinhos juntos no cesto representando Cauê e Fernanda',
+    width: 985,
+    height: 1690,
+  },
+];
+
+export interface PhotosRegistry {
+  hero: PhotoAsset;
+  portrait: PhotoAsset;
+  mirror: PhotoAsset;
+  pretinha: PhotoAsset;
+  pet: PhotoAsset;
+  baby: PhotoAsset;
+  hellokitty: PhotoAsset;
+  sad: PhotoAsset;
+  happy: PhotoAsset;
+  couple: [PhotoAsset, PhotoAsset];
+}
+
+export const photos: PhotosRegistry = {
   hero: {
     id: 'hero',
     category: 'fernanda',
@@ -27,13 +59,37 @@ export const photos = {
     width: 3024,
     height: 4032,
   },
+  pretinha: {
+    id: 'pretinha',
+    category: 'atmosphere',
+    src: base + 'nandinha3.jpeg',
+    alt: 'Pretinha com óculos roxos de lacinho no colo',
+    width: 1600,
+    height: 1200,
+  },
   pet: {
     id: 'pet',
     category: 'atmosphere',
     src: base + 'nandinha3.jpeg',
-    alt: 'Cachorrinho usando óculos roxos com laço',
+    alt: 'Pretinha com óculos roxos de lacinho no colo',
     width: 1600,
     height: 1200,
+  },
+  baby: {
+    id: 'baby',
+    category: 'fernanda',
+    src: base + 'nandinhabebe.jpeg',
+    alt: 'Nandinha criança sorrindo no carrossel',
+    width: 1200,
+    height: 1600,
+  },
+  hellokitty: {
+    id: 'hellokitty',
+    category: 'atmosphere',
+    src: base + 'hellokitty.jpg',
+    alt: 'Hello Kitty kawaii',
+    width: 310,
+    height: 276,
   },
   sad: {
     id: 'sad',
@@ -51,7 +107,8 @@ export const photos = {
     width: 415,
     height: 739,
   },
-} satisfies Record<string, PhotoAsset>;
+  couple: couplePhotos,
+};
 
 export interface StoryItem {
   id: string;
@@ -127,21 +184,50 @@ export const loves: StoryItem[] = [
 ];
 // Slots editoriais: fotos provisórias, sem inventar datas ou memórias compartilhadas.
 export const memories: StoryItem[] = [
-  photos.mirror,
-  photos.portrait,
-  photos.pet,
-  photos.hero,
-  photos.mirror,
-  photos.portrait,
-].map((image, index) => ({
-  id: `memory-${index + 1}`,
-  title: `Recorte ${String(index + 1).padStart(2, '0')}`,
-  description:
-    'Uma página reservada para uma lembrança nossa. A legenda ainda vai chegar.',
-  image,
-}));
+  {
+    id: 'memory-1',
+    title: 'Nós dois no carro',
+    description: 'Aquele dia no carro. Qualquer caminho fica leve com você do lado.',
+    image: photos.couple[0],
+  },
+  {
+    id: 'memory-2',
+    title: 'Seu vestido favorito',
+    description: 'Você no espelho, com esse jeito que me prende a atenção toda vez.',
+    image: photos.mirror,
+  },
+  {
+    id: 'memory-3',
+    title: 'A Pretinha de óculos',
+    description: 'O charme indiscutível da Pretinha com os óculos roxos de lacinho.',
+    image: photos.pretinha,
+  },
+  {
+    id: 'memory-4',
+    title: 'Juntinhos',
+    description: 'O nosso aconchego, dois dengos que se entendem no olhar.',
+    image: photos.couple[1],
+  },
+  {
+    id: 'memory-5',
+    title: 'Cabelos ao sol',
+    description: 'A luz batendo em você e eu só admirando.',
+    image: photos.hero,
+  },
+  {
+    id: 'memory-6',
+    title: 'A mais fofa desde sempre',
+    description: 'Essa carinha doce no carrossel já mostrava quem você ia ser.',
+    image: photos.baby,
+  },
+];
 export const reminders = [
   { id: 'bow', title: 'Um laço', description: 'Um detalhe delicado, com a sua cara.' },
+  {
+    id: 'pretinha',
+    title: 'A Pretinha',
+    description: 'Com óculos roxos e lacinho no colo. Um charme que não dá pra esquecer.',
+  },
   { id: 'heart', title: 'Um coração', description: 'Nem preciso explicar esse, né?' },
   {
     id: 'star',
@@ -156,11 +242,20 @@ export const emotionalLines = [
   'Eu errei com você.',
 ];
 export const letter = {
-  isPlaceholder: true,
-  title: 'Para você, com sinceridade.',
+  isPlaceholder: false,
+  salutation: 'Nandinha,',
+  introCta: 'LER A CARTA ♡',
   paragraphs: [
-    'Este espaço está reservado para a carta do Cauê. As palavras definitivas ainda estão sendo preparadas.',
+    'A vida é curta demais pra gente ficar preso ao que machucou.',
+    'Você mesma me mostrou que o amor consegue atravessar muita coisa. Quem acabou ficando preso no passado fui eu.',
+    'Eu carreguei coisas que já deveriam ter ficado para trás e deixei isso afetar a forma como eu agi com você.',
+    'E eu não quero continuar sendo essa versão de mim.',
+    'Eu sei que gostar de você não apaga o que eu fiz de errado. Também sei que uma carta, um site ou um pedido de desculpas não resolve tudo sozinho.',
+    'Mas eu quero aprender a fazer diferente.',
+    'Não só falar.',
+    'Fazer.',
   ],
+  signature: 'Cauê ♡',
 };
 export const actions = ['ouvir', 'respeitar', 'amadurecer', 'cuidar', 'melhorar'].map(
   (title) => ({

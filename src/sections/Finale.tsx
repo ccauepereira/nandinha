@@ -38,9 +38,14 @@ export function Finale() {
           <p className="celebration-intro">{finalCopy.celebration[0]}</p>
           <h2 id="final-title">{finalCopy.celebration[1]}</h2>
           <div className="celebration-photo">
-            <Photo image={photos.happy} />
+            <Photo image={photos.couple[0]} />
             <Ornament kind="heart" />
             <Ornament />
+            <span className="photo-label digital">Cauê & Nandinha ♡</span>
+          </div>
+          <div className="celebration-meme">
+            <Photo image={photos.happy} />
+            <span className="digital">Cauê depois do SIM ♡</span>
           </div>
           <a className="quiet" href="#hero">
             reviver tudo ♡

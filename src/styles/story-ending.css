@@ -15,15 +15,88 @@
 .emotional h2 {
   color: var(--color-cherry);
 }
+.emotional-transition-card {
+  position: relative;
+  width: min(85%, 340px);
+  margin: 32px auto 64px;
+  background: var(--color-paper);
+  padding: 8px 8px 18px;
+  box-shadow: var(--shadow-float);
+  border-radius: var(--radius-paper);
+  transform: rotate(-2deg);
+}
+.emotional-transition-card img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 4px;
+}
 .letter-section {
   padding-top: 32px;
 }
+.letter-envelope-teaser {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-block: 24px 48px;
+}
+.envelope-card {
+  position: relative;
+  width: min(100%, 540px);
+  background: var(--color-paper);
+  border: 2px dashed var(--color-pearl);
+  border-radius: var(--radius-paper);
+  box-shadow: var(--shadow-paper);
+  padding: clamp(32px, 6vw, 48px) 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.envelope-seal {
+  width: 54px;
+  height: 54px;
+  filter: drop-shadow(0 4px 8px rgba(185, 35, 73, 0.2));
+}
+.envelope-card h3 {
+  font-size: 13px;
+  color: var(--color-rose);
+  margin: 0;
+}
+.letter-open-button {
+  margin-top: 8px;
+  min-width: 200px;
+}
 .letter {
   max-width: 688px;
-  padding: clamp(20px, 5vw, 64px);
+  padding: clamp(24px, 5vw, 64px);
   background: var(--color-paper);
   box-shadow: var(--shadow-paper);
   border-top: 1px solid #e5dad1;
+  margin-inline: auto;
+}
+.physical-letter {
+  border: 1px solid #ebdcd5;
+  border-radius: 4px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.02),
+    0 20px 48px rgba(84, 36, 59, 0.08);
+  transform-origin: top center;
+}
+.letter-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.letter-fold-button {
+  font-size: 11px;
+  color: var(--color-rose);
+}
+.letter-salutation {
+  font-size: clamp(32px, 4vw, 44px);
+  color: var(--color-cherry);
 }
 .letter h2 {
   font-size: var(--text-title);
@@ -36,14 +109,17 @@
   padding-bottom: 8px;
 }
 .letter-body {
-  font: 500 var(--text-letter)/1.65 var(--font-display);
-  margin-block: 40px 64px;
+  font: 500 var(--text-letter)/1.75 var(--font-display);
+  margin-block: 32px 56px;
 }
-.letter-body p + p {
+.letter-paragraph + .letter-paragraph {
   margin-top: 24px;
 }
 .letter-signature {
-  font: italic 32px var(--font-display);
+  display: block;
+  font: italic clamp(28px, 4vw, 36px) var(--font-display);
+  color: var(--color-cherry);
+  text-align: right;
 }
 .actions {
   max-width: 1120px;

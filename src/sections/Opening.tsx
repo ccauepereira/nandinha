@@ -78,6 +78,7 @@ export function Opening() {
       <section
         id="mente"
         className="scene mind"
+        data-webgl-slot="caue-mind"
         aria-labelledby="mind-title"
         tabIndex={-1}
       >
@@ -88,7 +89,7 @@ export function Opening() {
         <p className="mind-main digital">
           Fernanda <strong>97.8%</strong>
         </p>
-        <div className="mind-photos" data-reveal>
+        <div className="mind-photos" data-webgl-slot="caue-mind-cosmos" data-reveal>
           {mindPhotos.map((image, index) => (
             <button
               key={image.id}

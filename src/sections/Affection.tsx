@@ -47,7 +47,7 @@ export function Affection() {
           <StatList items={withStats} />
         </div>
         <figure className="with-photo" data-reveal>
-          <Photo image={photos.hero} />
+          <Photo image={photos.couple[0]} />
           <Ornament kind="heart" />
           <figcaption className="photo-label">o motivo tem nome ♡</figcaption>
         </figure>
@@ -143,11 +143,24 @@ export function Affection() {
           {reminders.map((item) => (
             <details key={item.id}>
               <summary>
-                <Ornament kind={item.id} />
+                <Ornament kind={item.id === 'pretinha' ? 'bow' : item.id} />
                 <span>{item.title}</span>
                 <span className="digital">descobrir +</span>
               </summary>
-              <p>{item.description}</p>
+              <div className="reminder-detail">
+                <p>{item.description}</p>
+                {item.id === 'pretinha' && (
+                  <button
+                    type="button"
+                    className="polaroid pretinha-card"
+                    onClick={() => setSelected(photos.pretinha)}
+                    aria-label="Ampliar foto da Pretinha"
+                  >
+                    <Photo image={photos.pretinha} />
+                    <span className="digital">Pretinha de óculos e laço ♡</span>
+                  </button>
+                )}
+              </div>
             </details>
           ))}
         </div>
