@@ -1,11 +1,13 @@
+import { useReducedMotion } from '../hooks/useReducedMotion';
 import { useState, useRef, useEffect } from 'react';
 import anime from 'animejs';
 import { actions, emotionalLines, letter, photos } from '../data/content/story';
 import { Ornament } from '../components/story/Ornament';
 import { Photo } from '../components/story/Photo';
-import { createSafeTimeline, isReducedMotionPreferred } from '../animations/core/animeEngine';
+import { createSafeTimeline } from '../animations/core/animeEngine';
 
 export function HeartToHeart() {
+  const reduced = useReducedMotion();
   const [isLetterOpen, setIsLetterOpen] = useState(false);
   const letterPaperRef = useRef<HTMLElement>(null);
   const letterBodyRef = useRef<HTMLDivElement>(null);
@@ -13,8 +15,8 @@ export function HeartToHeart() {
   useEffect(() => {
     if (!isLetterOpen || !letterPaperRef.current) return;
 
-    if (!isReducedMotionPreferred()) {
-      const tl = createSafeTimeline();
+    const tl = createSafeTimeline();
+    if (!reduced) {
       tl.add({
         targets: letterPaperRef.current,
         opacity: [0, 1],
@@ -39,8 +41,20 @@ export function HeartToHeart() {
         );
       }
     }
-    letterPaperRef.current.focus();
-  }, [isLetterOpen]);
+    letterPaperRef.current.focus({ preventScroll: true });
+    const paper = letterPaperRef.current;
+    return () => {
+      tl.pause();
+      anime.remove(paper);
+      anime.remove(paper.querySelectorAll('.letter-paragraph'));
+      [paper, ...paper.querySelectorAll<HTMLElement>('.letter-paragraph')].forEach(
+        (element) => {
+          element.style.removeProperty('opacity');
+          element.style.removeProperty('transform');
+        },
+      );
+    };
+  }, [isLetterOpen, reduced]);
 
   const handleOpenLetter = () => {
     setIsLetterOpen(true);
@@ -57,8 +71,8 @@ export function HeartToHeart() {
         <p>{emotionalLines[1]}</p>
 
         {/* Transição de casal antes da carta */}
-        <figure className="emotional-transition-card" data-reveal>
-          <Photo image={photos.couple[1]} />
+        <figure className="emotional-transition-card">
+          <Photo image={photos.couple[0]} />
           <figcaption className="photo-label digital">o nosso cantinho ♡</figcaption>
         </figure>
 
@@ -69,7 +83,7 @@ export function HeartToHeart() {
       <section
         id="desculpas"
         className="scene letter-section"
-        aria-labelledby="letter-title"
+        aria-label="Pedido de desculpas"
       >
         {!isLetterOpen ? (
           <div className="letter-envelope-teaser" data-reveal>
@@ -101,13 +115,25 @@ export function HeartToHeart() {
               <button
                 type="button"
                 className="quiet letter-fold-button digital"
-                onClick={() => setIsLetterOpen(false)}
+                onClick={() => {
+                  setIsLetterOpen(false);
+                  requestAnimationFrame(() =>
+                    document
+                      .querySelector<HTMLButtonElement>('.letter-open-button')
+                      ?.focus({ preventScroll: true }),
+                  );
+                }}
                 aria-label="Guardar a carta"
               >
                 guardar a carta ✕
               </button>
             </div>
 
+            <figure className="letter-childhood">
+              <span className="tape" aria-hidden="true" />
+              <Photo image={photos.baby} />
+              <figcaption>você, desde pequenininha ♡</figcaption>
+            </figure>
             <h2 id="letter-title" className="letter-salutation">
               {letter.salutation}
             </h2>

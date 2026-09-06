@@ -1,3 +1,4 @@
+import { ProposalControls } from '../components/story/ProposalControls';
 import { useEffect, useRef, useState } from 'react';
 import { finalCopy, photos } from '../data/content/story';
 import { Ornament } from '../components/story/Ornament';
@@ -15,17 +16,7 @@ export function Finale() {
         <Ornament />
         <p className="eyebrow">uma última coisinha...</p>
         <h2 id="question-title">{finalCopy.question}</h2>
-        <div className="answer-area">
-          <button className="button" onClick={() => setAnswer('yes')}>
-            SIM 💗
-          </button>
-          <button className="button secondary" onClick={() => setAnswer('no')}>
-            NÃO
-          </button>
-        </div>
-        <button className="quiet" onClick={() => setAnswer('no')}>
-          encerrar por aqui
-        </button>
+        <ProposalControls onYes={() => setAnswer('yes')} onNo={() => setAnswer('no')} />
       </section>
       {answer === 'yes' && (
         <section

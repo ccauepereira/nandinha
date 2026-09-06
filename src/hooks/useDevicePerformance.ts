@@ -1,50 +1,31 @@
 import { useState, useEffect } from 'react';
 import type { DeviceTier } from '../types';
 
-interface DevicePerformanceInfo {
-  tier: DeviceTier;
-  isMobile: boolean;
-  maxDpr: number;
-  enableHeavyShaders: boolean;
-  maxParticles: number;
+function measurePerformance() {
+  const isMobile = window.innerWidth < 768;
+  const cores = navigator.hardwareConcurrency || 4;
+  const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4;
+  const tier: DeviceTier =
+    cores <= 2 || memory <= 2
+      ? 'low'
+      : isMobile || cores <= 4 || memory <= 4
+        ? 'medium'
+        : 'high';
+  return {
+    tier,
+    isMobile,
+    maxDpr: tier === 'low' ? 1 : tier === 'medium' ? 1.25 : 1.5,
+    enableHeavyShaders: false,
+    maxParticles: tier === 'low' ? 8 : tier === 'medium' ? 18 : 30,
+  };
 }
-
-/**
- * Dynamically computes device performance tier to throttle WebGL DPR,
- * post-processing passes, and animation density on lower-end hardware.
- */
-export function useDevicePerformance(): DevicePerformanceInfo {
-  const [perfInfo, setPerfInfo] = useState<DevicePerformanceInfo>({
-    tier: 'high',
-    isMobile: false,
-    maxDpr: 1.5,
-    enableHeavyShaders: true,
-    maxParticles: 100,
-  });
-
+export function useDevicePerformance() {
+  const [info, setInfo] = useState(measurePerformance);
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-    const hardwareConcurrency = navigator.hardwareConcurrency || 4;
-    const dpr = window.devicePixelRatio || 1;
-
-    // Check device capability
-    let tier: DeviceTier = 'high';
-    if (hardwareConcurrency <= 4 || isMobile) {
-      tier = hardwareConcurrency <= 2 ? 'low' : 'medium';
-    }
-
-    const maxDpr = isMobile ? Math.min(dpr, 1.5) : Math.min(dpr, 2);
-    const enableHeavyShaders = tier === 'high';
-    const maxParticles = tier === 'low' ? 30 : tier === 'medium' ? 60 : 120;
-
-    setPerfInfo({
-      tier,
-      isMobile,
-      maxDpr,
-      enableHeavyShaders,
-      maxParticles,
-    });
+    const query = window.matchMedia('(min-width: 768px)');
+    const update = () => setInfo(measurePerformance());
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
   }, []);
-
-  return perfInfo;
+  return info;
 }

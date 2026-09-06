@@ -1,114 +1,6 @@
 import type { PhotoAsset } from '../../types';
-
-// Seleção provisória P4. Trocar somente estas referências; preservar os originais.
-const base = '/assets/photos/fernanda/';
-const couplePhotos: [PhotoAsset, PhotoAsset] = [
-  {
-    id: 'couple-car',
-    category: 'couple',
-    src: base + 'nandinha7.jpeg',
-    alt: 'Cauê e Fernanda juntos no carro',
-    width: 900,
-    height: 1600,
-  },
-  {
-    id: 'couple-puppies',
-    category: 'couple',
-    src: base + 'caue-com-ela..webp',
-    alt: 'Dois cachorrinhos juntos no cesto representando Cauê e Fernanda',
-    width: 985,
-    height: 1690,
-  },
-];
-
-export interface PhotosRegistry {
-  hero: PhotoAsset;
-  portrait: PhotoAsset;
-  mirror: PhotoAsset;
-  pretinha: PhotoAsset;
-  pet: PhotoAsset;
-  baby: PhotoAsset;
-  hellokitty: PhotoAsset;
-  sad: PhotoAsset;
-  happy: PhotoAsset;
-  couple: [PhotoAsset, PhotoAsset];
-}
-
-export const photos: PhotosRegistry = {
-  hero: {
-    id: 'hero',
-    category: 'fernanda',
-    src: base + 'nandinha5.jpeg',
-    alt: 'Fernanda com os cabelos soltos iluminados pelo sol',
-    width: 1200,
-    height: 1600,
-  },
-  portrait: {
-    id: 'portrait',
-    category: 'fernanda',
-    src: base + 'nandinha1.jpeg',
-    alt: 'Fernanda apoiando o rosto na mão',
-    width: 1600,
-    height: 1011,
-  },
-  mirror: {
-    id: 'mirror',
-    category: 'fernanda',
-    src: base + 'nandinha2.jpeg',
-    alt: 'Fernanda fotografando seu reflexo com vestido estampado',
-    width: 3024,
-    height: 4032,
-  },
-  pretinha: {
-    id: 'pretinha',
-    category: 'atmosphere',
-    src: base + 'nandinha3.jpeg',
-    alt: 'Pretinha com óculos roxos de lacinho no colo',
-    width: 1600,
-    height: 1200,
-  },
-  pet: {
-    id: 'pet',
-    category: 'atmosphere',
-    src: base + 'nandinha3.jpeg',
-    alt: 'Pretinha com óculos roxos de lacinho no colo',
-    width: 1600,
-    height: 1200,
-  },
-  baby: {
-    id: 'baby',
-    category: 'fernanda',
-    src: base + 'nandinhabebe.jpeg',
-    alt: 'Nandinha criança sorrindo no carrossel',
-    width: 1200,
-    height: 1600,
-  },
-  hellokitty: {
-    id: 'hellokitty',
-    category: 'atmosphere',
-    src: base + 'hellokitty.jpg',
-    alt: 'Hello Kitty kawaii',
-    width: 310,
-    height: 276,
-  },
-  sad: {
-    id: 'sad',
-    category: 'atmosphere',
-    src: base + 'caue-sem-ela.jpg',
-    alt: 'Ilustração de um cachorrinho sentado com expressão triste',
-    width: 740,
-    height: 617,
-  },
-  happy: {
-    id: 'happy',
-    category: 'atmosphere',
-    src: base + 'caue-depois-do-sim.jpeg',
-    alt: 'Cachorrinho sorrindo para a câmera',
-    width: 415,
-    height: 739,
-  },
-  couple: couplePhotos,
-};
+import { photos } from './assets';
+export { photos } from './assets';
 
 export interface StoryItem {
   id: string;
@@ -122,9 +14,9 @@ export interface StatItem {
   max: number;
   suffix?: string;
 }
-export const mindPhotos = [photos.portrait, photos.hero, photos.mirror];
+export const mindPhotos = photos.brain;
 export const mindStats = [
-  ['Código', '1%'],
+  ['Código', '1.0%'],
   ['Cálculo', '0.7%'],
   ['Comida', '0.5%'],
 ];
@@ -149,78 +41,60 @@ export const loves: StoryItem[] = [
     id: 'sorriso',
     title: 'Seu sorriso',
     description: 'O meu detalhe favorito.',
-    image: photos.hero,
+    image: photos.thingsILove[0],
   },
   {
     id: 'olhar',
     title: 'Seu olhar',
     description: 'Daqueles que fazem o resto perder a importância.',
-    image: photos.portrait,
+    image: photos.thingsILove[1],
   },
   {
     id: 'jeito',
     title: 'Seu jeito',
     description: 'Tão seu. Tão impossível de confundir.',
-    image: photos.mirror,
+    image: photos.thingsILove[2],
   },
   {
     id: 'graca',
     title: 'Sua graça',
     description: 'Até as pequenas coisas ficam mais leves.',
-    image: photos.pet,
+    image: photos.thingsILove[3],
   },
   {
     id: 'presenca',
     title: 'Sua presença',
     description: 'O simples fato de ter você por perto.',
-    image: photos.hero,
+    image: photos.thingsILove[4],
   },
   {
     id: 'voce',
     title: 'Você, por inteira',
     description: 'Muito mais do que cabe nessa lista.',
-    image: photos.mirror,
+    image: photos.thingsILove[5],
   },
 ];
-// Slots editoriais: fotos provisórias, sem inventar datas ou memórias compartilhadas.
-export const memories: StoryItem[] = [
-  {
-    id: 'memory-1',
-    title: 'Nós dois no carro',
-    description: 'Aquele dia no carro. Qualquer caminho fica leve com você do lado.',
-    image: photos.couple[0],
-  },
-  {
-    id: 'memory-2',
-    title: 'Seu vestido favorito',
-    description: 'Você no espelho, com esse jeito que me prende a atenção toda vez.',
-    image: photos.mirror,
-  },
-  {
-    id: 'memory-3',
-    title: 'A Pretinha de óculos',
-    description: 'O charme indiscutível da Pretinha com os óculos roxos de lacinho.',
-    image: photos.pretinha,
-  },
-  {
-    id: 'memory-4',
-    title: 'Juntinhos',
-    description: 'O nosso aconchego, dois dengos que se entendem no olhar.',
-    image: photos.couple[1],
-  },
-  {
-    id: 'memory-5',
-    title: 'Cabelos ao sol',
-    description: 'A luz batendo em você e eu só admirando.',
-    image: photos.hero,
-  },
-  {
-    id: 'memory-6',
-    title: 'A mais fofa desde sempre',
-    description: 'Essa carinha doce no carrossel já mostrava quem você ia ser.',
-    image: photos.baby,
-  },
-];
+// Album uses different photographs from the Brain; the car returns as a couple callback.
+export const memories: StoryItem[] = photos.memories.map((image, index) => ({
+  id: `memory-${index + 1}`,
+  title:
+    [
+      'Nós no caminho',
+      'Seu jeito',
+      'Um instante em preto e branco',
+      'Esse sorriso',
+      'Entre um dia e outro',
+    ][index] ?? 'Um recorte para guardar.',
+  description:
+    [
+      'A nossa foto no carro, guardada por inteiro.',
+      'Um recorte seu que eu quis guardar.',
+      'Tem detalhes que não precisam de cor.',
+      'Um sorriso para revisitar.',
+      'As pequenas partes da vida também merecem uma página.',
+    ][index] ?? 'Um recorte para guardar.',
+  image,
+}));
 export const reminders = [
   { id: 'bow', title: 'Um laço', description: 'Um detalhe delicado, com a sua cara.' },
   {
@@ -246,6 +120,7 @@ export const letter = {
   salutation: 'Nandinha,',
   introCta: 'LER A CARTA ♡',
   paragraphs: [
+    'quando eu olho pra você, eu não vejo só a pessoa que você é hoje. Eu vejo tudo que você viveu, tudo que você superou e tudo que te trouxe até aqui.',
     'A vida é curta demais pra gente ficar preso ao que machucou.',
     'Você mesma me mostrou que o amor consegue atravessar muita coisa. Quem acabou ficando preso no passado fui eu.',
     'Eu carreguei coisas que já deveriam ter ficado para trás e deixei isso afetar a forma como eu agi com você.',
@@ -270,3 +145,14 @@ export const finalCopy = {
   celebration: ['EU SABIA.', 'TE AMO, NANDINHA ♡'],
   exit: 'Tudo bem. Seu tempo e sua decisão são seus.', // Encerramento provisório P4.
 };
+
+export const proposalMessages = [
+  '',
+  '',
+  '',
+  '🤨',
+  'Fernanda...',
+  'para',
+  'você tá tentando demais',
+  'APERTE O SIM, SEJA FELIZ.',
+];
