@@ -1,0 +1,101 @@
+@media (min-width: 768px) {
+  .brain,
+  .contrast-scene,
+  .character {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 64px;
+  }
+  .brain-copy {
+    text-align: left;
+  }
+  .brain {
+    min-height: 780px;
+    align-items: center;
+  }
+  .mind-photo.layer-1 {
+    width: 36%;
+    left: 32%;
+    top: 10%;
+  }
+  .mind-photo {
+    width: 25%;
+    left: 4%;
+  }
+  .mind-photo.layer-2 {
+    width: 25%;
+    left: 72%;
+    top: 3%;
+  }
+  .love-content {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .action-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .reminder-items {
+    gap: 64px;
+  }
+}
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 940px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    column-gap: 64px;
+  }
+  .hero-top,
+  .hero h1,
+  .hero-bottom {
+    grid-column: 1/-1;
+    width: 100%;
+  }
+  .hero h1 {
+    grid-row: 2;
+    text-align: left;
+  }
+  .hero-top {
+    margin-bottom: 40px;
+  }
+  .hero-copy {
+    grid-row: 3;
+    grid-column: 1;
+    text-align: left;
+    margin: 64px 0 0;
+    align-self: start;
+  }
+  .hero-note {
+    display: block;
+    font: 500 44px/1.15 var(--font-display);
+    margin-block: 56px;
+  }
+  .hero-copy .quiet {
+    display: inline-flex;
+  }
+  .hero-photo {
+    grid-column: 2;
+    grid-row: 2/4;
+    width: min(100%, 520px);
+    margin-top: 52px;
+    margin-bottom: 64px;
+  }
+  .hero-bow {
+    width: 160px;
+    right: -38px;
+  }
+  .hero-heart {
+    width: 150px;
+    left: -50px;
+  }
+  .hero h1 {
+    pointer-events: none;
+  }
+  .hero-bottom {
+    align-self: end;
+  }
+}
+
+.mind-photo:focus-visible {
+  z-index: 5;
+}

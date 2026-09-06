@@ -1,55 +1,29 @@
-import React from 'react';
-import styles from './App.module.css';
+import { useRef } from 'react';
 import { useLenisScroll } from './hooks/useLenisScroll';
+import { useReducedMotion } from './hooks/useReducedMotion';
+import { useStoryMotion } from './hooks/useStoryMotion';
+import { Opening } from './sections/Opening';
+import { Affection } from './sections/Affection';
+import { HeartToHeart } from './sections/HeartToHeart';
+import { Finale } from './sections/Finale';
+import './styles/story.css';
 
-export const App: React.FC = () => {
-  // Initialize smooth scroll orchestration
-  useLenisScroll({ enabled: true });
-
+export default function App() {
+  const reduced = useReducedMotion();
+  const root = useRef<HTMLElement>(null);
+  useLenisScroll({ enabled: !reduced });
+  useStoryMotion(root);
   return (
-    <main className={styles.container}>
-      <article className={styles.card}>
-        <span className={styles.badge}>Prompt 1 — Arquitetura</span>
-        <h1 className={styles.title}>Nandinha</h1>
-        <p className={styles.description}>
-          Fundação técnica e arquitetura do projeto estabelecidas com sucesso. Nenhuma
-          tela narrativa, conteúdo romântico ou modelagem 3D foi implementado neste
-          estágio.
-        </p>
-
-        <div className={styles.grid}>
-          <div className={styles.item}>
-            <span className={styles.dot} />
-            <span>React 19 + TypeScript + Vite</span>
-          </div>
-          <div className={styles.item}>
-            <span className={styles.dot} />
-            <span>Three.js + R3F + Drei Setup</span>
-          </div>
-          <div className={styles.item}>
-            <span className={styles.dot} />
-            <span>Anime.js Engine + Reduced Motion</span>
-          </div>
-          <div className={styles.item}>
-            <span className={styles.dot} />
-            <span>Lenis Smooth Scroll</span>
-          </div>
-          <div className={styles.item}>
-            <span className={styles.dot} />
-            <span>Design Tokens & CSS Modules</span>
-          </div>
-          <div className={styles.item}>
-            <span className={styles.dot} />
-            <span>Data-Driven Content Schemas</span>
-          </div>
-        </div>
-
-        <footer className={styles.footer}>
-          Pronto para o Prompt 2 (Estrutura Narrativa e Conteúdo).
-        </footer>
-      </article>
-    </main>
+    <>
+      <a className="skip-link button" href="#hero">
+        Pular introdução
+      </a>
+      <main ref={root}>
+        <Opening />
+        <Affection />
+        <HeartToHeart />
+        <Finale />
+      </main>
+    </>
   );
-};
-
-export default App;
+}

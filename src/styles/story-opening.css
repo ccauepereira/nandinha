@@ -1,0 +1,259 @@
+.boot {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 64px 24px;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #f8dce580, transparent 65%);
+}
+.boot h2 {
+  font-size: clamp(32px, 5vw, 48px);
+}
+.boot .eyebrow {
+  margin: 0;
+}
+.boot .ornament {
+  width: 100px;
+}
+.boot .button {
+  min-width: 200px;
+}
+.edition {
+  font: italic 20px var(--font-display);
+  color: var(--color-rose);
+  margin-top: 32px;
+}
+.hero {
+  position: relative;
+  min-height: 844px;
+  padding-top: 28px;
+  padding-bottom: 32px;
+}
+.hero-top,
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.hero-top {
+  font-size: 10px;
+  margin-bottom: 42px;
+}
+.hero h1 {
+  font-size: var(--text-cover);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  color: var(--color-cherry);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.hero-copy {
+  text-align: center;
+  margin-top: 16px;
+}
+.hero-note {
+  display: none;
+}
+.hero-copy .quiet {
+  display: none;
+}
+.hero-photo {
+  position: relative;
+  isolation: isolate;
+  width: min(89%, 520px);
+  margin-block: 40px 52px;
+}
+.hero-photo::before {
+  content: '';
+  position: absolute;
+  inset: -30px -20px;
+  background: radial-gradient(ellipse, var(--color-pearl), transparent 70%);
+  z-index: -1;
+}
+.hero-photo > img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-photo);
+  box-shadow: var(--shadow-float);
+}
+.hero-bow {
+  position: absolute;
+  width: 110px;
+  right: -28px;
+  top: -42px;
+  transform: rotate(14deg);
+}
+.hero-heart {
+  position: absolute;
+  width: 110px;
+  bottom: -30px;
+  left: -32px;
+  transform: rotate(-18deg);
+}
+.hero-star {
+  position: absolute;
+  width: 48px;
+  right: -25px;
+  bottom: 50px;
+}
+.photo-label {
+  position: absolute;
+  bottom: 18px;
+  right: -12px;
+  padding: 9px 14px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-paper);
+  transform: rotate(-3deg);
+  font-size: 12px;
+}
+.hero-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-rose);
+}
+.brain {
+  background: radial-gradient(
+    ellipse at 70% 60%,
+    var(--color-pearl),
+    var(--color-cream) 65%
+  );
+  display: grid;
+  gap: 36px;
+}
+.brain-copy {
+  text-align: center;
+}
+.brain h2 {
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+.brain-stage {
+  position: relative;
+  width: min(100%, 540px);
+  display: grid;
+  place-items: center;
+  padding: 24px 0;
+}
+.portal {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 20px solid var(--color-pearl);
+  background: radial-gradient(ellipse at 45% 40%, #f8dce5, #b587a2 62%, #8b5060);
+  box-shadow:
+    inset 0 8px 32px #6c395450,
+    0 22px 48px #8b506022,
+    inset 0 0 0 3px #fff9f1;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+}
+.portal .ornament {
+  width: clamp(180px, 24vw, 340px);
+  filter: drop-shadow(0 28px 14px #54243b50);
+}
+.portal-caption {
+  margin-top: 12px;
+  background: var(--color-paper);
+  padding: 4px 12px;
+  border-radius: 5px;
+}
+.portal-bow {
+  position: absolute;
+  width: 72px;
+  bottom: 8px;
+  right: 10%;
+}
+.mind {
+  background: linear-gradient(var(--color-cream), var(--color-pearl) 25%, #f4eaf0);
+  text-align: center;
+}
+.mind-main {
+  margin-top: 24px;
+}
+.mind-main strong {
+  font-size: 32px;
+  font-weight: 500;
+  margin-left: 12px;
+}
+.mind-photos {
+  position: relative;
+  height: clamp(400px, 52vw, 590px);
+  max-width: 900px;
+  margin-top: 24px;
+  perspective: 1000px;
+}
+.polaroid {
+  display: block;
+  background: var(--color-paper);
+  padding: 8px 8px 20px;
+  box-shadow: var(--shadow-float);
+  border-radius: var(--radius-paper);
+  text-align: left;
+  width: 100%;
+  transition:
+    box-shadow 180ms,
+    rotate 180ms;
+}
+.polaroid:hover {
+  box-shadow: 0 24px 50px #522b3c40;
+}
+.polaroid img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+.mind-photo {
+  position: absolute;
+  width: 37%;
+  top: 10%;
+  left: 0;
+  transform: rotate(-9deg);
+}
+.mind-photo span {
+  display: block;
+  font-size: 10px;
+  margin-top: 10px;
+}
+.mind-photo.layer-1 {
+  z-index: 2;
+  width: 57%;
+  left: 22%;
+  top: 23%;
+  transform: rotate(2deg);
+}
+.mind-photo.layer-2 {
+  left: 64%;
+  width: 36%;
+  top: 4%;
+  transform: rotate(10deg);
+  background: linear-gradient(135deg, #fffefb, #cfe5e5, #f8dce5, #eae6f2);
+}
+.mind-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 32px;
+  margin-block: 24px;
+}
+.mind-stats div {
+  display: flex;
+  gap: 10px;
+}
+.system-message {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-cherry);
+  padding: 16px;
+  max-width: 560px;
+  text-align: left;
+  overflow-wrap: anywhere;
+}

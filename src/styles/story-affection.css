@@ -1,0 +1,256 @@
+.contrast-scene {
+  display: grid;
+  align-items: center;
+  gap: 48px;
+}
+.without {
+  background: var(--color-mono-bg);
+  color: var(--color-mono-ink);
+}
+.without h2 {
+  font: 700 clamp(32px, 4.5vw, 64px)/1.05 var(--font-ui);
+  letter-spacing: -0.04em;
+}
+.without .eyebrow {
+  color: var(--color-mono-ink);
+}
+.meme {
+  width: min(100%, 400px);
+  height: auto;
+}
+.sad-meme {
+  filter: grayscale(1);
+  mix-blend-mode: multiply;
+}
+.stat-list {
+  margin-top: 32px;
+  width: 100%;
+  font: 12px/1.5 var(--font-digital);
+}
+.stat-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 24px;
+  margin-top: 20px;
+  position: relative;
+  padding-bottom: 12px;
+}
+.stat-list dd {
+  text-align: right;
+}
+.stat-track {
+  position: absolute;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #8b506024;
+}
+.stat-track span {
+  display: block;
+  height: 100%;
+  background: currentColor;
+}
+.with {
+  background: var(--color-baby);
+  color: var(--color-cherry);
+}
+.with-photo {
+  width: min(100%, 430px);
+  position: relative;
+}
+.with-photo > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border: 10px solid var(--color-paper);
+  box-shadow: var(--shadow-float);
+  transform: rotate(3deg);
+}
+.with-photo .ornament {
+  position: absolute;
+  top: -28px;
+  right: -20px;
+  width: 100px;
+}
+.character {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+.character-intro p:last-child {
+  margin-top: 24px;
+  color: var(--color-rose);
+}
+.character-card {
+  width: min(100%, 420px);
+  padding: 20px;
+  background: linear-gradient(
+    130deg,
+    #fffefb,
+    #eae6f2 30%,
+    #dceae6 55%,
+    #f8dce5 80%,
+    #fffefb
+  );
+  border: 1px solid #fff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-float);
+  transform: rotate(2deg);
+}
+.character-card header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.character-card > img {
+  aspect-ratio: 4/3;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.character-card footer {
+  margin-top: 24px;
+  font-size: 10px;
+}
+.loves h2,
+.actions h2 {
+  margin-bottom: 48px;
+}
+.love-list {
+  max-width: 960px;
+}
+.love-list details {
+  border-bottom: 1px solid var(--color-line);
+}
+.love-list summary {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  cursor: pointer;
+  min-height: 96px;
+  padding: 20px 0;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.love-number {
+  color: var(--color-rose);
+}
+.expand-mark {
+  margin-left: auto;
+  font-size: 28px;
+  color: var(--color-cherry);
+}
+details[open] .expand-mark {
+  rotate: 45deg;
+}
+.love-content {
+  display: grid;
+  gap: 24px;
+  padding: 0 0 32px 36px;
+}
+.love-content p {
+  max-width: 400px;
+  color: var(--color-rose);
+}
+.love-content img {
+  width: min(100%, 320px);
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.memories {
+  background: #f2eade;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 31px,
+    #8b506008 32px
+  );
+}
+.album-heading {
+  margin-bottom: 56px;
+}
+.album-heading > span {
+  display: block;
+  margin-top: 24px;
+  color: var(--color-rose);
+}
+.album {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+  gap: 56px 40px;
+}
+.memory {
+  min-width: 0;
+}
+.memory .polaroid {
+  position: relative;
+  rotate: -2deg;
+}
+.memory:nth-child(even) .polaroid {
+  rotate: 3deg;
+}
+.memory .polaroid img {
+  aspect-ratio: 1;
+}
+.tape {
+  position: absolute;
+  width: 80px;
+  height: 24px;
+  left: calc(50% - 40px);
+  top: -12px;
+  background: #e0c5bfbd;
+  rotate: -5deg;
+}
+.memory-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 8px 0;
+  font: italic 24px var(--font-display);
+}
+.memory > p {
+  font-size: 13px;
+  margin: 24px 8px 0;
+  color: var(--color-rose);
+}
+.reminders {
+  text-align: center;
+}
+.reminder-items {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+}
+.reminder-items summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  min-height: 44px;
+}
+.reminder-items .ornament {
+  width: clamp(72px, 15vw, 180px);
+  max-width: 100%;
+}
+.reminder-items summary > span:first-of-type {
+  font: 500 clamp(18px, 2.5vw, 32px) var(--font-display);
+}
+.reminder-items .digital {
+  font-size: 10px;
+  color: var(--color-rose);
+}
+.reminder-items p {
+  margin-top: 24px;
+  font-size: 14px;
+}

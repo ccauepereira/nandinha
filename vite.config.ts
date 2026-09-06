@@ -26,10 +26,13 @@ export default defineConfig({
     chunkSizeWarningLimit: 900,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-three': ['three', '@react-three/fiber', '@react-three/drei'],
-          'vendor-motion': ['animejs', 'lenis'],
+        // Classify only modules actually imported. The object form pulled the
+        // future 3D graph (and shared React runtime) into the P4 entry chunk.
+        manualChunks(id) {
+          if (!id.includes('/node_modules/')) return;
+          if (/\/(react|react-dom|scheduler)\//.test(id)) return 'vendor-react';
+          if (/\/(three|@react-three)\//.test(id)) return 'vendor-three';
+          if (/\/(animejs|lenis)\//.test(id)) return 'vendor-motion';
         },
       },
     },

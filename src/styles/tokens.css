@@ -110,3 +110,51 @@
   --breakpoint-desktop: 1024px;
   --breakpoint-large: 1440px;
 }
+
+/* P3 official visual values. Existing P1 aliases remain compatible. */
+:root {
+  --color-cream: #fff9f1;
+  --color-paper: #fffefb;
+  --color-baby: #f8dce5;
+  --color-cherry: #b92349;
+  --color-rose: #8b5060;
+  --color-ink: #241f23;
+  --color-pearl: #eae6f2;
+  --color-chrome: #b7bdc7;
+  --color-line: #dcccd0;
+  --color-mono-bg: #eceae7;
+  --color-mono-ink: #393739;
+  --color-focus: var(--color-cherry);
+  --color-background: var(--color-cream);
+  --color-surface: var(--color-paper);
+  --color-primary: var(--color-cherry);
+  --color-primary-hover: #9e1d3e;
+  --color-text-primary: var(--color-ink);
+  --color-text-secondary: var(--color-rose);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'Manrope', Arial, sans-serif;
+  --font-digital: 'IBM Plex Mono', monospace;
+  --font-family-display: var(--font-display);
+  --font-family-body: var(--font-ui);
+  --font-family-mono: var(--font-digital);
+  --text-cover: clamp(3.5rem, 16.4vw, 9rem);
+  --text-display: clamp(2.75rem, 5.6vw, 5rem);
+  --text-title: clamp(2rem, 3.4vw, 3rem);
+  --text-letter: clamp(1.25rem, 2vw, 1.5rem);
+  --page-gutter: clamp(24px, 5.55vw, 80px);
+  --content-max: 1280px;
+  --section-space: clamp(64px, 9vw, 120px);
+  --radius-paper: 2px;
+  --radius-photo: 8px;
+  --radius-panel: 24px;
+  --radius-toy: 40px;
+  --radius-pill: 999px;
+  --shadow-paper: 0 4px 12px rgb(36 31 35 / 8%);
+  --shadow-float: 0 20px 48px rgb(82 43 60 / 16%);
+  --shadow-contact: 0 8px 16px rgb(82 43 60 / 12%);
+  --shadow-button: 0 4px 0 #861a36;
+  --motion-press: 120ms;
+  --motion-reveal: 360ms;
+  --motion-scene: 700ms;
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
